@@ -1,0 +1,62 @@
+<section>
+  <div class="">
+    {%- if section.settings.image != blank -%}
+      <div class="user-selection">
+        <h1></h1>
+      </div>
+    {%- else -%}
+      <div class="default">
+        <h1></h1>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .default {
+    background-image: url("{{ 'banner.jpg' | asset_url }}");
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+  }
+  .user-selection {
+    background-image: url("{{ section.settings.image | image_url }}");
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "three-images",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "image",
+      "info": "400 x 120px .png recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "image2",
+      "label": "image2",
+      "info": "400 x 120px .png recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "image3",
+      "label": "image3",
+      "info": "400 x 120px .png recommended"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "three-images"
+    }
+  ]
+}
+{% endschema %}

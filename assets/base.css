@@ -2213,6 +2213,7 @@ product-info .loading__spinner:not(.hidden) ~ *,
   flex-wrap: wrap;
   align-content: center;
   grid-area: announcements;
+  padding: 0 10px;
 }
 
 .announcement-bar .slider--everywhere {

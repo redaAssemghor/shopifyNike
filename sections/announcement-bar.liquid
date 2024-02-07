@@ -1,5 +1,5 @@
 {%- if section.settings.show_announcement -%}
-  <section>
+  <section class="announcement-bar">
     <div class="announcement-bar">
       <div class="announcement-bar-left-section">
         {%- if section.settings.image2 != blank -%}
@@ -71,6 +71,15 @@
       ;
       color: {{ section.settings.text_color }}
       ;
+    }
+
+    .announcement-bar-inner-list li a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .announcement-bar-inner-list li {
+      list-style: none;
     }
   </style>
 
