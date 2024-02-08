@@ -40,24 +40,24 @@
               <a href="#">Help</a>
             </li>
 
-            {% if shop.customer_accounts_enabled %}
-              {% if customer %}
-                <li>
-                  <a href="/account">Account</a>
-                </li>
+            {% if customer %}
+              <li>
+                <a href="/account">Account</a>
+              </li>
 
-              {% else %}
-                <li>
-                  <a href="/account/login">Sign in</a>
-                </li>
-              {% endif %}
+            {% else %}
+              <li>
+                <a href="/account/login">Sign in</a>
+              </li>
             {% endif %}
 
           {%- else -%}
             {% for block in section.blocks %}
-              <li>
-                <a href="{{ block.settings.link }}">{{ block.settings.text | escape }}</a>
-              </li>
+              <ul>
+                <li>
+                  <a href="{{ block.settings.link }}">{{ block.settings.text | escape }}</a>
+                </li>
+              </ul>
             {% endfor %}
           {%- endif -%}
         </ul>
@@ -80,6 +80,21 @@
 
     .announcement-bar-inner-list li {
       list-style: none;
+      padding-inline: 15px;
+      border-right: 2px solid black;
+    }
+
+    .announcement-bar-inner-list {
+      font-size: 0.8em;
+      font-weight: bold;
+      display: flex;
+      gap: 4;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .announcement-bar {
+        display: none;
+      }
     }
   </style>
 
