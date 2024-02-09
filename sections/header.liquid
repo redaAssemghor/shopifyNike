@@ -22,7 +22,23 @@
   </div>
 
   <div class="menu-container">
-    <button id="btn">drop</button>
+    <button id="btn">
+      <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M4 17.27v-1h16v1zm0-4.77v-1h16v1zm0-4.77v-1h16v1z"/>
+      </svg>
+
+      <svg
+        id="crossIcon"
+        style="display: none;"
+        xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
+        viewBox="0 0 16 16"
+      >
+        <path fill="currentColor" d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z"/>
+      </svg>
+    </button>
+
     <ul class="middle-nav-links">
       {% for link in linklists['main-menu'].links -%}
         <li>{{ link.title | link_to: link.url }}</li>
@@ -46,13 +62,24 @@
     </a>
   </div>
 </header>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const btn = document.getElementById('btn');
+    const menuIcon = document.getElementById('menuIcon');
+    const crossIcon = document.getElementById('crossIcon');
 
     btn.addEventListener('click', () => {
-      console.log('clicked');
-      document.querySelector('.middle-nav-links').classList.toggle('drop-down');
+      const navLinks = document.querySelector('.middle-nav-links');
+      navLinks.classList.toggle('drop-down');
+
+      if (navLinks.classList.contains('drop-down')) {
+        menuIcon.style.display = 'none';
+        crossIcon.style.display = 'inline';
+      } else {
+        menuIcon.style.display = 'inline';
+        crossIcon.style.display = 'none';
+      }
     });
   });
 </script>
@@ -63,7 +90,6 @@
     margin-bottom: 10px;
   }
   .header-nav {
-    z-index: 1000;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -105,6 +131,9 @@
     .right-nav-items {
       margin-right: 30px;
     }
+    .header-nav {
+      padding-bottom: 30px;
+    }
   }
 
   .img-anchor {
@@ -131,19 +160,32 @@
   }
 
   .drop-down {
-    top: 50%;
+    width: 80%;
+    height: 100vh;
+    padding: 40px;
+    top: 0;
     right: 0;
     display: block;
     position: absolute;
-    background-color: blue;
-    z-index: 999;
+    background-color: white;
+    z-index: 1000;
+    font-size: 20px;
+  }
+
+  .drop-down li {
+    margin-bottom: 40px;
   }
 
   #btn {
     position: absolute;
-    top: 50%;
+    top: 45%;
     right: 10px;
     transform: translateY(-50%);
+    z-index: 1001;
+    border: none;
+    background-color: inherit;
+    font-size: 35px;
+    cursor: pointer;
   }
 
   @media only screen and (min-width: 768px) {

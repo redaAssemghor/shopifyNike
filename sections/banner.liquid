@@ -1,5 +1,5 @@
-<section>
-  <div class="banner-wrapper">
+<section class="banner-wrapper">
+  <div>
     <div class="slide-text" id="text1">
       {% if section.settings['text-1'] != blank %}
         <p>{{ section.settings['text-1'] }}</p>
@@ -27,23 +27,35 @@
 
 <style>
   .banner-wrapper {
+    position: relative;
     padding: 30px;
     background: {{ section.settings.background }}
     ;
     color: {{ section.settings.text_color }}
     ;
+    z-index: 1;
   }
 
   .slide-text {
-    z-index: 1;
     position: absolute;
-    top: 155px;
-    left: -150%;
     transform: translate(0, -50%);
-    color: black;
+    color: inherit;
     padding: 20px;
     font-size: 20px;
     transition: left 0.5s ease-in-out;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .banner-wrapper {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: 769px) {
+    .slide-text {
+      top: 50%;
+      left: -150%;
+    }
   }
 </style>
 

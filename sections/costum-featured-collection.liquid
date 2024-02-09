@@ -6,8 +6,9 @@
         <div class="collection-card">
           <a href="{{ collection.url }}">
             <img
-              width="450"
-              height="450"
+              class="img"
+              width=""
+              height=""
               loading="lazy"
               src="{{ collection.featured_image | image_url}}"
             >
@@ -48,6 +49,18 @@
 
   .collection-card a:hover {
     text-decoration: underline;
+  }
+
+  .img {
+    width: 450px;
+    height: 450px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .img {
+      width: 300px;
+      height: 300px;
+    }
   }
 </style>
 
